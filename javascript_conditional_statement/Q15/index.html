@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q15</title>
+</head>
+<body>
+    
+    <h1>Electricity Bill Cal</h1>
+    <form id="billForm">
+        <label for="units">Enter the number of units:</label>
+        <input type="number" id="units" name="units" required>
+        <br><br>
+        <button type="button" onclick="calculateBill()">Calculate Bill</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateBill() {
+            let units = parseInt(document.getElementById("units").value);
+            let billAmount;
+
+            if (units <= 100) {
+                billAmount = units * 1.5; 
+            } else if (units <= 200) {
+                billAmount = (100 * 1.5) + ((units - 100) * 2.5); 
+            } else {
+                billAmount = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 3.5); 
+            }
+
+            document.getElementById("result").innerText = "Your Electricity Bill is Rs." + billAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>

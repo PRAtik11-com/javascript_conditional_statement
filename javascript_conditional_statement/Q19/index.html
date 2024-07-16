@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q18</title>
+</head>
+<body>
+    <h1>Password Checker</h1>
+    <form>
+        <label>Enter your password:</label>
+        <input type="password" id="password" required>
+        <br><br>
+        <button type="button" onclick="CPS()">click here</button>
+    </form>
+    <h2 id="result"></h2>
+    <script>
+    function CPS() {
+        var password = document.getElementById("password").value;
+        var strength = 0;
+        var result;
+
+        if (password.length >= 8) {
+            strength++;
+        }
+        if (/[A-Z]/.test(password)) {
+            strength++;
+        }
+        if (/[a-z]/.test(password)) {
+            strength++;
+        }
+        if (/[0-9]/.test(password)) {
+            strength++;
+        }
+        if (/[^A-Za-z0-9]/.test(password)) {
+            strength++;
+        }
+
+        if (strength <= 1) {
+            result = "Very Weak";
+        } else if (strength == 2) {
+            result = "Weak";
+        } else if (strength == 3) {
+            result = "Moderate";
+        } else if (strength == 4) {
+            result = "Strong";
+        } else if (strength == 6) {
+            result = "Very Strong";
+        }
+
+        document.getElementById("result").innerText = "Password Strength: " + result;
+    }
+</script>
+</body>
+</html>

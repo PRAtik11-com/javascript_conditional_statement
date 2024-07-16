@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <title>Q18</title>
+</head>
+<body>
+    
+    <h1>Discount Calculator</h1>
+    <form id="discountForm">
+        <label>Enter the total amount spent :</label>
+        <input type="number" id="totalAmount"  required>
+        <br><br>
+        <button type="button" onclick="discount()">Calculate Discount</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        function discount() {
+            var TotalA = parseFloat(document.getElementById("totalAmount").value);
+            var discountRate;
+
+            if (TotalA < 399) {
+                discountRate = 0; // No discount 
+            } else if (TotalA >= 400 && TotalA < 699) {
+                discountRate = 0.1; // for 10% discount 
+            } else if (TotalA >= 700 && TotalA < 1000) {
+                discountRate = 0.2; // for 20% discount 
+            } else {
+                discountRate = 0.3; // for 30% discount 
+            }
+
+            var discountAmount = TotalA * discountRate;
+            var finalAmount = TotalA - discountAmount;
+
+            document.getElementById("result").innerText = 
+                "Total Amount: Rs" + TotalA.toFixed(2) + "\n" +
+                "Discount: Rs" + discountAmount.toFixed(2) + " (" + (discountRate * 100) + "%)\n" +
+                "Final Amount to Pay: Rs" + finalAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>

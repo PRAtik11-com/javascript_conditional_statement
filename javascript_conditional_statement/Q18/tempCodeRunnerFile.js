@@ -1,0 +1,1 @@
+document.getElementById("order_total").value = "$" + totalPlusTax.toFixed(2);
